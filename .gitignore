@@ -1,0 +1,11 @@
+/target/
+*/.mvn/
+*/target
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+/.idea/
+*/.idea/
