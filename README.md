@@ -20,3 +20,5 @@
 
 #### O código está com alguns java docs caso haja necessidade de maiores informações.
 #### Todos os testes podem ser feitos através do Swagger nas devidas URLs.
+
+Para rodar todas as aplicações com docker, será necessário ter o docker e docker-compose instalado em sua máquina, então basta fazer o build das aplicações com o maven, depois na pasta raiz do projeto executar o comando "docker-compose up -d --build"

@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  mysql:
+    build:
+      context: .
+      dockerfile: mysql.dockerfile
+    image: campanha/mysql
+    container_name: mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    volumes:
+      - /tmp/mysql:/var/lib/mysql
+
+  campanha-crud:
+    build:
+      context: ./campanha-crud
+      dockerfile: Dockerfile
+    image: campanha/campanha-crud
+    container_name: campanha-crud
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysql:3306/campanha
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+
+  campanha-usuario:
+    build:
+      context: ./campanha-usuario
+      dockerfile: Dockerfile
+    image: campanha/campanha-usuario
+    container_name: campanha-usuario
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysql:3306/usuario
+    ports:
+      - 8081:8081
+    depends_on:
+      - mysql
